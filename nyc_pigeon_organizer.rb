@@ -1,44 +1,16 @@
 require "pry"
 
 def nyc_pigeon_organizer(data)
+  organized_list = {}
+  data.each do |key, hash|
+    hash.each do |value, names|
+      names.each do |name|
+        organized_list[name] = {} unless organized_list[name]
+        organized_list[name][key] = [] unless organized_list[name][key]
+        organized_list[name][key] << value.to_s
 
-  pigeon_list = {
-  "Theo" => {
-    :color => ["purple", "grey"],
-    :gender => ["male"],
-    :lives => ["Subway"]
-  },
-  "Peter Jr." => {
-    :color => ["purple", "grey"],
-    :gender => ["male"],
-    :lives => ["Library"]
-  },
-  "Lucky" => {
-    :color => ["purple"],
-    :gender => ["male"],
-    :lives => ["Central Park"]
-  },
-  "Ms. K" => {
-    :color => ["grey", "white"],
-    :gender => ["female"],
-    :lives => ["Central Park"]
-  },
-  "Queenie" => {
-    :color => ["white", "brown"],
-    :gender => ["female"],
-    :lives => ["Subway"]
-  },
-  "Andrew" => {
-    :color => ["white"],
-    :gender => ["male"],
-    :lives => ["City Hall"]
-  },
-  "Alex" => {
-    :color => ["white", "brown"],
-    :gender => ["male"],
-    :lives => ["Central Park"]
-  }
-}
-
-  return pigeon_list
+      end
+    end
+  end
+  organized_list
 end
